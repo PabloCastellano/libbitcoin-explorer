@@ -1,0 +1,8 @@
+usr/include/bitcoin/*.hpp
+usr/include/bitcoin/explorer/*.hpp
+usr/include/bitcoin/explorer/commands/*.hpp
+usr/include/bitcoin/explorer/impl/*.ipp
+usr/include/bitcoin/explorer/primitives/*.hpp
+usr/lib/lib*.a
+usr/lib/lib*.so
+usr/lib/pkgconfig/*.pc
