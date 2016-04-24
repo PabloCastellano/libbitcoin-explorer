@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+
+# checking libbitcoin account
+
+uid=`getent passwd libbitcoin | cut -d ":" -f 3`
+home=`getent passwd libbitcoin | cut -d ":" -f 6`
+
+# if there is the uid the account is there and we can do
+# the sanit(ar)y checks otherwise we can safely create it.
+
+for i in lib log; do
+    if ! [ -d "/var/$i/libbitcoin" ]; then
+        mkdir "/var/$i/libbitcoin"
+    fi
+done
+
+if ! [ -d "/var/lib/libbitcoin/explorer" ]; then
+    mkdir "/var/lib/libbitcoin/explorer"
+fi
+
+chown libbitcoin:adm /var/log/libbitcoin
+chmod 755 /var/log/libbitcoin
+
+chown root:libbitcoin /var/lib/libbitcoin/explorer -R
+chmod 775 /var/lib/libbitcoin/explorer
+
+#DEBHELPER#
+
+exit 0
