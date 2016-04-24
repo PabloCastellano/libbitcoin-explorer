@@ -1,0 +1,34 @@
+Index: b/data/bx.cfg
+===================================================================
+--- a/data/bx.cfg	2016-04-24 14:15:32.219591054 +0200
++++ b/data/bx.cfg	2016-04-24 14:16:14.975589526 +0200
+@@ -11,17 +11,18 @@
+ # The time limit to complete the connection handshake, defaults to 30.
+ channel_handshake_seconds = 30
+ # The path to the p2p hosts file, defaults to 'hosts.cache'.
+-hosts_file = hosts.cache
++hosts_file = /var/lib/libbitcoin/explorer/hosts.cache
+ 
+ [logging]
+ # The debug log file path, defaults to 'debug.log'.
+-debug_file = debug.log
++debug_file = /var/log/libbitcoin/explorer_debug.log
+ # The error log file path, defaults to 'error.log'.
+-error_file = error.log
++error_file = /var/log/libbitcoin/explorer_error.log
+ 
+ [mainnet]
+ # The URL of the mainnet Libbitcoin/Obelisk server.
+ url = tcp://obelisk.airbitz.co:9091
++#url = tcp://gateway.unsystem.net:9091
+ # The Z85-encoded public key of the server certificate.
+ # server_cert_key = 
+ # The path to the ZPL-encoded client private certificate file.
+@@ -30,6 +31,7 @@
+ [testnet]
+ # The URL of the Libbitcoin/Obelisk testnet server.
+ url = tcp://obelisk-testnet.airbitz.co:9091
++#url = tcp://testnet.unsystem.net:9091
+ # The Z85-encoded public key of the server certificate.
+ # server_cert_key = 
+ # The path to the ZPL-encoded client private certificate file.
