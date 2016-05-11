@@ -9,6 +9,28 @@ home=`getent passwd libbitcoin | cut -d ":" -f 6`
 # if there is the uid the account is there and we can do
 # the sanit(ar)y checks otherwise we can safely create it.
 
+if [ "$uid" ]; then
+    if [ "$home" = "/var/lib/libbitcoin" ]; then
+        :
+        #echo "libbitcoin homedir check: ok"
+    else
+        echo "ERROR: libbitcoin account has an unexpected home directory!"
+        echo "It should be '/var/lib/libbitcoin', but it is '$home'."
+        echo "Removing the libbitcoin user might fix this, but the question"
+        echo "remains how you got into this mess to begin with."
+        exit 1
+    fi
+else
+    adduser --quiet \
+        --system \
+        --disabled-password \
+        --home /var/lib/libbitcoin \
+        --no-create-home \
+        --shell /bin/false \
+        --group \
+        libbitcoin
+fi
+
 for i in lib log; do
     if ! [ -d "/var/$i/libbitcoin" ]; then
         mkdir "/var/$i/libbitcoin"
